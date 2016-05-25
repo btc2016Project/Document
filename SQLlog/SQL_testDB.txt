@@ -1,5 +1,8 @@
---作成者 青山 05/14
-
+--作成者 青山 05/25
+drop table article_comment;
+drop table user_favorite;
+drop table article_master;
+drop table user_master;
 
 CREATE TABLE `prototype`.`user_master` ( 
 `user_id` INT NOT NULL , 
@@ -14,9 +17,10 @@ CREATE TABLE `prototype`.`article_master` (
 `regist_date` DATE NOT NULL , 
 `regist_user_id` INT(10) NOT NULL , 
 `article_category` VARCHAR(127) NOT NULL ,
+`article_comment` VARCHAR(255) NOT NULL,
  PRIMARY KEY (`article_id`)) ;
 
-CREATE TABLE `prototype`.`user_favrite` (
+CREATE TABLE `prototype`.`user_favorite` (
     `fav_id` INT NOT NULL,
     `user_id` INT NOT NULL ,
     `fav_article_id` INT NOT NULL ,
@@ -41,11 +45,11 @@ INSERT INTO `user_master`(`user_id`, `user_password`, `user_name`) VALUES ('3','
 INSERT INTO `user_master`(`user_id`, `user_password`, `user_name`) VALUES ('4','aoyama1208','user4');
 INSERT INTO `user_master`(`user_id`, `user_password`, `user_name`) VALUES ('5','aoyama1208','user5');
 
-INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`) VALUES ('1','TECHSCORE Java等の学習サイト','http://www.techscore.com/','2016/05/15','1','Java');
-INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`) VALUES ('2','2016年のトレンドフレームワーク比較記事','http://www.sejuku.net/blog/3333','2016/05/15','1','Java');
-INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`) VALUES ('3','どっとインストール','http://dotinstall.com/','2016/05/15','1','Others');
-INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`) VALUES ('4','クラウドで出遅れたOracle','http://www.itmedia.co.jp/enterprise/articles/1604/25/news089.html','2016/05/15','1','Oracle');
-INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`) VALUES ('5','title1','http://www.techscore.com/','2016/05/15','1','Oracle');
+INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`,`article_comment`) VALUES ('1','TECHSCORE Java等の学習サイト','http://www.techscore.com/','2016/05/15','1','Java','まじでやばい');
+INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`,`article_comment`) VALUES ('2','2016年のトレンドフレームワーク比較記事','http://www.sejuku.net/blog/3333','2016/05/15','1','Java','まじでやばい');
+INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`,`article_comment`) VALUES ('3','どっとインストール','http://dotinstall.com/','2016/05/15','1','Others','まじでやばい');
+INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`,`article_comment`) VALUES ('4','クラウドで出遅れたOracle','http://www.itmedia.co.jp/enterprise/articles/1604/25/news089.html','2016/05/15','1','Oracle','まじでやばい');
+INSERT INTO `article_master`(`article_id`, `article_title`, `article_url`, `regist_date`, `regist_user_id`, `article_category`,`article_comment`) VALUES ('5','title1','http://www.techscore.com/','2016/05/15','1','Oracle','まじでやばい');
 
 INSERT INTO `article_comment`(`article_comment_id`, `article_id`, `article_comment`, `comment_user_id`, `comment_date`) VALUES ('1','1','まじでやばい','1','2016/05/15');
 INSERT INTO `article_comment`(`article_comment_id`, `article_id`, `article_comment`, `comment_user_id`, `comment_date`) VALUES ('2','1','まじでやばい','1','2016/05/15');
@@ -53,8 +57,10 @@ INSERT INTO `article_comment`(`article_comment_id`, `article_id`, `article_comme
 INSERT INTO `article_comment`(`article_comment_id`, `article_id`, `article_comment`, `comment_user_id`, `comment_date`) VALUES ('4','1','まじでやばい','3','2016/05/15');
 INSERT INTO `article_comment`(`article_comment_id`, `article_id`, `article_comment`, `comment_user_id`, `comment_date`) VALUES ('5','1','まじでやばい','1','2016/05/15');
 
-INSERT INTO `user_favrite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('1','1','1');
-INSERT INTO `user_favrite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('2','1','2');
-INSERT INTO `user_favrite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('3','1','3');
-INSERT INTO `user_favrite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('4','1','4');
-INSERT INTO `user_favrite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('5','1','5');
+INSERT INTO `user_favorite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('1','1','1');
+INSERT INTO `user_favorite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('2','1','2');
+INSERT INTO `user_favorite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('3','1','3');
+INSERT INTO `user_favorite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('4','1','4');
+INSERT INTO `user_favorite`(`fav_id`, `user_id`, `fav_article_id`) VALUES ('5','1','5');
+
+COMMIT;
